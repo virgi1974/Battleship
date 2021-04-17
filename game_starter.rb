@@ -70,6 +70,7 @@ end
 
 def select_player_movement(player, target_player)
   valid_movement = false
+  attempts = 0
   while valid_movement == false
     puts "#{player.name} - choose you movement  💣 \n"
     prompt = ">  "
@@ -77,8 +78,12 @@ def select_player_movement(player, target_player)
     
     valid_movement = $current_game.drop_bomb(target_player.board, position.to_sym)
 
-    if valid_movement == false
-      message = "👎 wrong position , please try again \n" 
+    if valid_movement == false && attempts == 0
+      attempts += 1
+      puts "👎 wrong position but you have an extra shot! \n" 
+    elsif valid_movement == false
+      puts "👎 wrong position again \n"
+      break
     else
       message = compose_message(valid_movement)
     end
