@@ -13,8 +13,11 @@ puts "please choose a name for the second player: \n"
 prompt = ">  "
 second_player_name = Readline.readline(prompt, true)
 
-first_player = Player.new(first_player_name)
-second_player = Player.new(second_player_name)
+names = [first_player_name, second_player_name]
+names.shuffle! if ARGV[0] == "RANDOM"
+
+first_player = Player.new(names[0])
+second_player = Player.new(names[1])
 
 ########## INIT GAME ##########
 $current_game = Game.new(first_player, second_player)
