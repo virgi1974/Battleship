@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pry'
 require './lib/validators/position_validator'
 
@@ -15,25 +17,25 @@ class Board
 
   def populate_board
     positions = []
-    ("a".."z").to_a[0...size].each do |field_letter|
+    ('a'..'z').to_a[0...size].each do |field_letter|
       size.times do |field_number|
         positions << "#{field_letter}#{field_number}".to_sym
       end
     end
 
-    Hash[positions.collect { |position| [position, 0] } ]
+    Hash[positions.collect { |position| [position, 0] }]
   end
 
   def letter_fields_configured_in_board
-    ("a".."z").to_a[0...size]
+    ('a'..'z').to_a[0...size]
   end
 
   def create_ship(positions)
     positions.map do |candidate_position|
       if !fields.key?(candidate_position)
-        raise OutOfBoardLimitsError.new('field is out of board limits')
+        raise OutOfBoardLimitsError, 'field is out of board limits'
       elsif fields[candidate_position] != 0
-        raise OverWritingError.new('that field has been already updated')
+        raise OverWritingError, 'that field has been already updated'
       else
         fields[candidate_position] = 1
       end

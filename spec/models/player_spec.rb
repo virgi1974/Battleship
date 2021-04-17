@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'player'
 
 describe Player do
   let!(:player) { FactoryBot.build(:player) }
-  let!(:player_without_name) { FactoryBot.build(:player, name: "") }
+  let!(:player_without_name) { FactoryBot.build(:player, name: '') }
 
   describe 'initialization' do
     it 'has expected attributes' do
