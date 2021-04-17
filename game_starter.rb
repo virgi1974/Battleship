@@ -36,7 +36,8 @@ def init_game(first_player_name, second_player_name)
   def select_ship_positions(player, ship_size)
     valid_selection = false
     while valid_selection == false
-      puts "#{player.name} - please choose positions for the #{ship_size}x1 ship: \n"
+      puts "---- #{player.name} ---- please choose positions for the #{ship_size}x1 ship: \n"
+      puts "must be separated by a space like: a0 a1 a3 \n"
       prompt = '>  '
       positions = Readline.readline(prompt, true)
       positions_simbolized = positions.split(' ').map(&:to_sym)

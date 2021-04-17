@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'board'
-require 'pry'
 
 describe Board do
   let!(:board) { FactoryBot.build(:board) }
